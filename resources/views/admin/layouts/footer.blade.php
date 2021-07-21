@@ -1,18 +1,26 @@
-<footer class="footer footer-transparent">
-    <div class="container">
-        <div class="row text-center align-items-center flex-row-reverse">
-            <div class="col-lg-auto ml-lg-auto">
-                <ul class="list-inline list-inline-dots mb-0">
-                    <li class="list-inline-item"><a href="{{ asset('template/admin/docs/index.html') }}" class="link-secondary">Documentation</a></li>
-                    <li class="list-inline-item"><a href="{{ asset('template/admin/faq.html') }}" class="link-secondary">FAQ</a></li>
-                    <li class="list-inline-item"><a href="https://github.com/tabler/tabler" target="_blank" class="link-secondary">Source code</a></li>
-                </ul>
-            </div>
-            <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-                Copyright © 2020
-                <a href="." class="link-secondary">Tabler</a>.
-                All rights reserved.
-            </div>
-        </div>
+<footer class="footer">
+    <div class="container-fluid">
+        <nav class="pull-left">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://www.themekita.com">
+                        ThemeKita
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Help
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Licenses
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="copyright ml-auto">
+            2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="http://www.themekita.com">ThemeKita</a>
+        </div>				
     </div>
 </footer>

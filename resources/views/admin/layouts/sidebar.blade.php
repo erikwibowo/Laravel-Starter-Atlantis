@@ -1,46 +1,111 @@
-<aside class="navbar navbar-vertical navbar-expand-lg navbar-dark">
-    <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a href="." class="navbar-brand navbar-brand-autodark">
-            <img src="{{ asset('template/admin/static/logo-white.svg') }}" alt="Tabler" class="navbar-brand-image">
-        </a>
-        <div class="navbar-nav flex-row d-lg-none">
-            <div class="nav-item dropdown">
-                @include('admin.layouts.profile')
-            </div>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-menu">
-            <ul class="navbar-nav pt-lg-3">
-                <li class="nav-item {{ empty(Request::segment(2)) ? 'active':'' }}">
-                    <a class="nav-link" href="{{ route('admin.dashboard') }}" >
-                        <i class="nav-icon fas fa-home"></i>
-                        <span class="nav-link-title">Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-item {{ Request::segment(2) == 'admin' ? 'active':'' }}">
-                    <a class="nav-link" href="{{ route('admin.index') }}" >
-                        <i class="nav-icon fas fa-user"></i>
-                        <span class="nav-link-title">Admin</span>
-                    </a>
-                </li>
-                <li class="nav-item active dropdown">
-                    <a class="nav-link dropdown-toggle" href="#navbar-layout" data-toggle="dropdown" role="button" aria-expanded="true" >
-                        <i class="nav-icon fas fa-th-large"></i>
-                        <span class="nav-link-title">
-                            Layout
+<div class="sidebar sidebar-style-2">			
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <div class="user">
+                <div class="avatar-sm float-left mr-2">
+                    <img src="{{ asset('template/admin/assets/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle">
+                </div>
+                <div class="info">
+                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+                        <span>
+                            Hizrian
+                            <span class="user-level">Administrator</span>
+                            <span class="caret"></span>
                         </span>
                     </a>
-                    <ul class="dropdown-menu show">
-                        <li >
-                            <a class="dropdown-item active" href="{{ asset('template/admin/layout-fluid-vertical.html') }}" >
-                                Fluid vertical
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="clearfix"></div>
+
+                    <div class="collapse in" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+                                <a href="#profile">
+                                    <span class="link-collapse">My Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#edit">
+                                    <span class="link-collapse">Edit Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#settings">
+                                    <span class="link-collapse">Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-primary">
+                <li class="nav-item active">
+                    <a href="{{ route('admin.dashboard') }}">
+                        <i class="fas fa-home"></i>
+                        <p>Dashboard</p>
+                    </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.index') }}">
+                        <i class="fas fa-user"></i>
+                        <p>Admin</p>
+                    </a>
+                </li>
+                {{-- <li class="nav-item active">
+                    <a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-home"></i>
+                        <p>Dashboard</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="dashboard">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ asset('template/admin/demo1/index.html') }}">
+                                    <span class="sub-item">Dashboard 1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ asset('template/admin/demo2/index.html') }}">
+                                    <span class="sub-item">Dashboard 2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ asset('template/admin/demo3/index.html') }}">
+                                    <span class="sub-item">Dashboard 3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ asset('template/admin/demo4/index.html') }}">
+                                    <span class="sub-item">Dashboard 4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ asset('template/admin/demo5/index.html') }}">
+                                    <span class="sub-item">Dashboard 5</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ asset('template/admin/demo6/index.html') }}">
+                                    <span class="sub-item">Dashboard 6</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ asset('template/admin/demo7/index.html') }}">
+                                    <span class="sub-item">Dashboard 7</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ asset('template/admin/demo8/index.html') }}">
+                                    <span class="sub-item">Dashboard 8</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ asset('template/admin/demo9/index.html') }}">
+                                    <span class="sub-item">Dashboard 9</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li> --}}
             </ul>
         </div>
     </div>
-</aside>
+</div>

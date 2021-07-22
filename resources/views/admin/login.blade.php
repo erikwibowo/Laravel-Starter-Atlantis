@@ -4,7 +4,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>Login</title>
         <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-        <link rel="icon" href="../assets/img/icon.ico" type="image/x-icon"/>
+        <link rel="icon" href="{{ asset('template/admin/assets/img/icon.ico') }}" type="image/x-icon"/>
 
         <!-- Fonts and icons -->
         <script src="{{ asset('template/admin/assets/js/plugin/webfont/webfont.min.js') }}"></script>
@@ -59,21 +59,55 @@
         <script src="{{ asset('template/admin/assets/js/core/popper.min.js') }}"></script>
         <script src="{{ asset('template/admin/assets/js/core/bootstrap.min.js') }}"></script>
         <script src="{{ asset('template/admin/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('template/admin/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
         <script src="{{ asset('template/admin/assets/js/atlantis.min.js') }}"></script>
         @if (session('notif'))
             @if (session('type') == 'success')
                 <script>
-                    toastr.success('{{ session('notif') }}')
+                    $.notify({
+                        icon: 'flaticon-alarm-1',
+                        title: 'Pemberitahuan',
+                        message: '{{ session('notif') }}',
+                    },{
+                        type: 'success',
+                        placement: {
+                            from: "top",
+                            align: "right"
+                        },
+                        time: 1000,
+                    });
                 </script>
             @else
                 <script>
-                    toastr.error('{{ session('notif') }}')
+                    $.notify({
+                        icon: 'flaticon-alarm-1',
+                        title: 'Pemberitahuan',
+                        message: '{{ session('notif') }}',
+                    },{
+                        type: 'danger',
+                        placement: {
+                            from: "top",
+                            align: "right"
+                        },
+                        time: 1000,
+                    });
                 </script>
             @endif
         @endif
         @if (!$errors->isEmpty())
             <script>
-                toastr.error('{{ implode('\n', $errors->all()) }}')
+                $.notify({
+                    icon: 'flaticon-alarm-1',
+                    title: 'Pemberitahuan',
+                    message: '{{ implode('\n', $errors->all()) }}',
+                },{
+                    type: 'danger',
+                    placement: {
+                        from: "top",
+                        align: "right"
+                    },
+                    time: 5000,
+                });
             </script>
         @endif
     </body>

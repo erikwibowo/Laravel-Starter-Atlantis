@@ -1,55 +1,68 @@
 @extends('admin.layouts.master')
 @section('content')
-    <div class="card">
-        <div class="card-header">
-            <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal-tambah">
-                <i class="fas fa-plus"></i> Tambah
-            </button>
-        </div>
-        <div class="card-body table-responsive">
-            <table class="table datatable table-striped table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Telepon</th>
-                        <th>Alamat</th>
-                        <th>Status</th>
-                        <th>Login</th>
-                        <th>Tanggal</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($data as $i)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $i->name }}</td>
-                            <td>{{ $i->email }}</td>
-                            <td>{{ $i->phone }}</td>
-                            <td>{{ $i->address }}</td>
-                            <td>
-                                @if ($i->status)
-                                    <span class="badge bg-cyan-lt">Aktif</span>
-                                @else
-                                    <span class="badge bg-red-lt">Non Aktif</span>
-                                @endif
-                            </td>
-                            <td>{{ $i->login_at }}</td>
-                            <td>{{ $i->created_at }}</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-sm btn-primary btn-edit" data-id="{{ $i->id }}"><i class="fas fa-eye"></i>&nbsp;&nbsp;Edit</button>
-                                    <button class="btn btn-sm btn-danger btn-delete" data-id="{{ $i->id }}" data-name="{{ $i->name }}"><i class="fas fa-trash"></i>&nbsp;&nbsp;Hapus</button>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+<div class="container">
+    <div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                <div>
+                    <h2 class="text-white pb-2 fw-bold">{{ $title }}</h2>
+                </div>
+            </div>
         </div>
     </div>
+    <div class="page-inner mt--5">
+        <div class="card">
+            <div class="card-header">
+                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal-tambah">
+                    <i class="fas fa-plus"></i> Tambah
+                </button>
+            </div>
+            <div class="card-body table-responsive">
+                <table class="display table table-striped table-hover table-bordered datatable" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Telepon</th>
+                            <th>Alamat</th>
+                            <th>Status</th>
+                            <th>Login</th>
+                            <th>Tanggal</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data as $i)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $i->name }}</td>
+                                <td>{{ $i->email }}</td>
+                                <td>{{ $i->phone }}</td>
+                                <td>{{ $i->address }}</td>
+                                <td>
+                                    @if ($i->status)
+                                        <span class="badge bg-cyan-lt">Aktif</span>
+                                    @else
+                                        <span class="badge bg-red-lt">Non Aktif</span>
+                                    @endif
+                                </td>
+                                <td>{{ $i->login_at }}</td>
+                                <td>{{ $i->created_at }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-sm btn-primary btn-edit" data-id="{{ $i->id }}"><i class="fas fa-eye"></i>&nbsp;&nbsp;Edit</button>
+                                        <button class="btn btn-sm btn-danger btn-delete" data-id="{{ $i->id }}" data-name="{{ $i->name }}"><i class="fas fa-trash"></i>&nbsp;&nbsp;Hapus</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 @section('js')
     <script>
@@ -88,13 +101,13 @@
     </script>
 @endsection
 @section('modal')
-    <div class="modal modal-blur fade show" id="modal-tambah" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-modal="true">
+    <div class="modal fade" id="modal-tambah" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Tambah Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <i class="fas fa-times"></i>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -147,7 +160,7 @@
                         </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-white mr-auto" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-danger mr-auto" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
                 </form>
@@ -160,7 +173,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Edit Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <i class="fas fa-times"></i>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -216,7 +229,7 @@
                 <div class="modal-footer">
                     <input type="hidden" name="id" id="id">
                     <input type="hidden" name="email_old" id="email_old">
-                    <button type="button" class="btn btn-white mr-auto" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-danger mr-auto" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
                 </form>
@@ -229,7 +242,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Hapus Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <i class="fas fa-times"></i>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -240,7 +253,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id" id="id-delete">
-                    <button type="button" class="btn btn-white mr-auto" data-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-danger">Hapus</button>
                 </div>
             </form>

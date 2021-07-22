@@ -8,8 +8,8 @@
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                         <span>
-                            Hizrian
-                            <span class="user-level">Administrator</span>
+                            {{ session('name') }}
+                            <span class="user-level">{{ session('email') }}</span>
                             <span class="caret"></span>
                         </span>
                     </a>
@@ -18,11 +18,11 @@
                     <div class="collapse in" id="collapseExample">
                         <ul class="nav">
                             <li>
-                                <a href="#profile">
-                                    <span class="link-collapse">My Profile</span>
+                                <a href="#" data-toggle="modal" data-target="#modal-logout">
+                                    <span class="link-collapse">Logout</span>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="#edit">
                                     <span class="link-collapse">Edit Profile</span>
                                 </a>
@@ -31,19 +31,19 @@
                                 <a href="#settings">
                                     <span class="link-collapse">Settings</span>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>
             </div>
             <ul class="nav nav-primary">
-                <li class="nav-item active">
+                <li class="nav-item {{ empty(Request::segment(2)) ? 'active':'' }}">
                     <a href="{{ route('admin.dashboard') }}">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ Request::segment(2) == 'admin' ? 'active':'' }}">
                     <a href="{{ route('admin.index') }}">
                         <i class="fas fa-user"></i>
                         <p>Admin</p>
